@@ -1150,10 +1150,17 @@ static irqreturn_t mxt_interrupt(int irq, void *dev_id)
 	if (!data->object_table)
 		return IRQ_HANDLED;
 
+	irqreturn_t actual;
 	if (data->T44_address) {
-		return mxt_process_messages_t44(data);
+		actual = mxt_process_messages_t44(data);
 	} else {
-		return mxt_process_messages(data);
+		actual = mxt_process_messages(data);
+	}
+
+	if (irq == 65) {
+		return IRQ_HANDLED;
+	} else {
+		return actual;
 	}
 }
 
