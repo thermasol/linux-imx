@@ -82,7 +82,7 @@
 };
 
 / {
-	model = "Variscite VAR-SOM-MX8MM board";
+	model = "ThermaTouch";
 	compatible = "variscite,dart-mx8mm", "fsl,imx8mm";
 
 	chosen {
@@ -842,6 +842,10 @@
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_i2c4>;
 	status = "okay";
+        adc081c {
+                compatible = "ti,adc081c";
+                reg = <0x54>;
+        };
 };
 
 &csi1_bridge {
