@@ -13,8 +13,6 @@
  * GNU General Public License for more details.
  */
 
-#include "fsl-imx8mm-var-som-rev10.dts"
-
 / {
 	reserved-memory {
 		#address-cells = <2>;
