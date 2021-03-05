@@ -88,7 +88,7 @@
 	chosen {
 		bootargs = "console=ttymxc3,115200 earlycon=ec_imx6q,0x30a60000,115200";
 
-		bootargs-append = "console=ttymxc3,115200 earlycon=ec_imx6q,0x30a60000,115200 androidboot.console=ttymxc3 androidboot.board=varsommx8mmini androidboot.bt_uart=/dev/ttymxc1 androidboot.bt_sdio=/sys/bus/mmc/devices/mmc0:0001/mmc0:0001:1/device androidboot.bt_firmware=bcm43430a1.hcd androidboot.bt_sdio_id=0xa9a6 androidboot.selinux=permissive";
+		bootargs-append = "console=ttymxc3,115200 earlycon=ec_imx6q,0x30a60000,115200 androidboot.console=ttymxc3 androidboot.board=varsommx8mmini androidboot.bt_uart=/dev/ttymxc1 androidboot.bt_sdio=/sys/bus/mmc/devices/mmc0:0001/mmc0:0001:1/device androidboot.bt_firmware=BCM43430A1.hcd androidboot.bt_sdio_id=0xa9a6 androidboot.selinux=permissive";
 
 		stdout-path = &uart4;
 	};
@@ -232,6 +232,14 @@
 			gpios = <&pca9534 0 GPIO_ACTIVE_HIGH>;
 			linux,default-trigger = "heartbeat";
 		};
+	};
+
+	extcon_usb1: extcon_usb1 {
+		compatible = "linux,extcon-usb-gpio";
+		pinctrl-names = "default";
+		pinctrl-0 = <&pinctrl_extcon>;
+		id-gpio = <&gpio1 11 GPIO_ACTIVE_HIGH>;
+		status = "okay";
 	};
 };
 
@@ -526,8 +534,7 @@
 
 		pinctrl_captouch: captouchgrp {
 			fsl,pins = <
-				MX8MM_IOMUXC_GPIO1_IO02_GPIO1_IO2		0x16
-				MX8MM_IOMUXC_ECSPI1_SS0_GPIO5_IO9		0x13
+				MX8MM_IOMUXC_SPDIF_RX_GPIO5_IO4			0x16
 			>;
 		};
 
@@ -564,6 +571,13 @@
 				MX8MM_IOMUXC_GPIO1_IO07_GPIO1_IO7		0x16
 			>;
 		};
+
+		pinctrl_extcon: extcongrp {
+			fsl,pins = <
+				MX8MM_IOMUXC_GPIO1_IO11_GPIO1_IO11		0x16
+			>;
+		};
+		
 	};
 };
 
@@ -650,8 +664,8 @@
 			ldo1_reg: regulator@6 {
 				reg = <6>;
 				regulator-compatible = "LDO1";
-				regulator-min-microvolt = <3000000>;
-				regulator-max-microvolt = <3300000>;
+				regulator-min-microvolt = <1600000>;
+				regulator-max-microvolt = <1900000>;
 				regulator-boot-on;
 				regulator-always-on;
 			};
@@ -659,7 +673,7 @@
 			ldo2_reg: regulator@7 {
 				reg = <7>;
 				regulator-compatible = "LDO2";
-				regulator-min-microvolt = <900000>;
+				regulator-min-microvolt = <800000>;
 				regulator-max-microvolt = <900000>;
 				regulator-boot-on;
 				regulator-always-on;
@@ -976,6 +990,7 @@
 	dr_mode = "otg";
 	picophy,pre-emp-curr-control = <3>;
 	picophy,dc-vol-level-adjust = <7>;
+	extcon = <0>, <&extcon_usb1>;
 	status = "okay";
 };
 
