@@ -7,7 +7,7 @@
 #include "fsl-imx8mm-var-som.dts"
 
 / {
-	model = "Variscite VAR-SOM-MX8M-MINI on Symphony-Board 1.4 and below";
+	model = "ThermaTouch";
 };
 
 &usbotg1 {
