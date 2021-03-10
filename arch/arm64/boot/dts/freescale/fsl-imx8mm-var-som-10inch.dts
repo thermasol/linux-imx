@@ -9,15 +9,15 @@
 		ti,lvds-format = <2>;
 		display-timings {
 			lvds {
-				clock-frequency = <0x1a52480>;
-				hactive = <0x320>;
-				vactive = <0x1e0>;
-				hback-porch = <0x05>;
-				hfront-porch = <0x69>;
-				vback-porch = <0x2>;
-				vfront-porch = <0x18>;
-				hsync-len = <0x65>;
-				vsync-len = <0x1a>;
+				clock-frequency = <0x30D4000>;
+				hactive = <0x400>;
+				vactive = <0x258>;
+				hback-porch = <0xa0>;
+				hfront-porch = <0x18>;
+				vback-porch = <0x1d>;
+				vfront-porch = <0x3>;
+				hsync-len = <0x88>;
+				vsync-len = <0x6>;
 			};
 		};
 	};
@@ -32,8 +32,8 @@
 		pinctrl-0 = <&pinctrl_captouch>;
 		interrupt-parent = <&gpio1>;
 		interrupts = <2 0>;
-		atmel,panel-coords = <0x0 0x0 0x31f 0x1df>;
-		atmel,display-coords = <0x0 0x0 0x31f 0x1df>;
+		atmel,panel-coords = <0x0 0x0 0x3ff 0x257>;
+		atmel,display-coords = <0x0 0x0 0x3ff 0x257>;
 		vdd_ana-supplu = <0x2c>;
 		irq-gpio = <&gpio1 2 1>;
 		reset-gpio = <&gpio5 9 GPIO_ACTIVE_HIGH>;
