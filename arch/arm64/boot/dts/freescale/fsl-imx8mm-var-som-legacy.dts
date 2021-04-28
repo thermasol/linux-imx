@@ -14,7 +14,7 @@
 	/delete-property/ extcon;
 };
 
-&i2c3 {
+&i2c2 {
 	/* ISL12057 RTC module */
 	rtc@0x68 {
 		compatible = "isil,isl12057";
