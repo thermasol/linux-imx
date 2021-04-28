@@ -13,3 +13,11 @@
 &usbotg1 {
 	/delete-property/ extcon;
 };
+
+&i2c3 {
+	/* ISL12057 RTC module */
+	rtc@0x68 {
+		compatible = "isil,isl12057";
+		reg = <0x68>;
+	};
+};
