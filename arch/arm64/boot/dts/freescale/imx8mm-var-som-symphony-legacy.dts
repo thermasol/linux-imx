@@ -7,10 +7,17 @@
 #include "imx8mm-var-som-symphony.dts"
 
 / {
-	model = "Variscite VAR-SOM-MX8M-MINI on Symphony-Board 1.4 and below";
+	model = "ThermaTouch";
 };
 
 &usbotg1 {
 	/delete-property/ extcon;
 };
 
+&i2c2 {
+	/* ISL12057 RTC module */
+	rtc@0x68 {
+		compatible = "isil,isl12057";
+		reg = <0x68>;
+	};
+};

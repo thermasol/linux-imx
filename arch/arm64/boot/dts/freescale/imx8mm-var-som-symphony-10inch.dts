@@ -1,0 +1,41 @@
+/*
+ * Copyright 2021 Thermasol, Blake W. Ford
+ */
+
+#include "imx8mm-var-som-symphony-legacy.dts"
+
+&i2c1 {
+	dsi_lvds_bridge: sn65dsi84@2c {
+		ti,lvds-format = <2>;
+		display-timings {
+			lvds {
+				clock-frequency = <0x30D4000>;
+				hactive = <0x400>;
+				vactive = <0x258>;
+				hback-porch = <0xa0>;
+				hfront-porch = <0x18>;
+				vback-porch = <0x1d>;
+				vfront-porch = <0x3>;
+				hsync-len = <0x88>;
+				vsync-len = <0x6>;
+			};
+		};
+	};
+};
+
+&i2c3 {
+	/* Capacitive touch controller */
+	touch@4b {
+		compatible = "atmel,maxtouch";
+		reg = <0x4b>;
+		pinctrl-name = "default";
+		pinctrl-0 = <&pinctrl_captouch>;
+		interrupt-parent = <&gpio1>;
+		interrupts = <2 0>;
+		atmel,panel-coords = <0x0 0x0 0x3ff 0x257>;
+		atmel,display-coords = <0x0 0x0 0x3ff 0x257>;
+		vdd_ana-supplu = <0x2c>;
+		irq-gpio = <&gpio1 2 1>;
+		reset-gpio = <&gpio5 9 GPIO_ACTIVE_HIGH>;
+	};
+};

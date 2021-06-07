@@ -16,7 +16,7 @@
 	chosen {
 		bootargs = "console=ttymxc3,115200 earlycon=ec_imx6q,0x30a60000,115200";
 
-		bootargs-append = "console=ttymxc3,115200 earlycon=ec_imx6q,0x30a60000,115200 androidboot.console=ttymxc3 androidboot.board=varsommx8mmini androidboot.bt_uart=/dev/ttymxc1 androidboot.bt_sdio=/sys/bus/mmc/devices/mmc0:0001/mmc0:0001:1/device androidboot.bt_firmware=BCM43430A1.hcd androidboot.bt_sdio_id=0xa9a6 androidboot.wificountrycode=CN";
+		bootargs-append = "console=ttymxc3,115200 earlycon=ec_imx6q,0x30a60000,115200 androidboot.console=ttymxc3 androidboot.board=varsommx8mmini androidboot.bt_uart=/dev/ttymxc1 androidboot.bt_sdio=/sys/bus/mmc/devices/mmc0:0001/mmc0:0001:1/device androidboot.bt_firmware=BCM43430A1.hcd androidboot.bt_sdio_id=0xa9a6 androidboot.wificountrycode=CN androidboot.selinux=permissive";
 
 		stdout-path = &uart4;
 	};
@@ -137,7 +137,8 @@
 &iomuxc {
 	pinctrl_captouch: captouchgrp {
 		fsl,pins = <
-			MX8MM_IOMUXC_SPDIF_RX_GPIO5_IO4			0x16
+			MX8MM_IOMUXC_GPIO1_IO02_GPIO1_IO2               0x16
+			MX8MM_IOMUXC_ECSPI1_SS0_GPIO5_IO9               0x13
 		>;
 	};
 
@@ -365,27 +366,27 @@
 
 &i2c3 {
 	/* Capacitive touch controller */
-	ft5x06_ts: ft5x06_ts@38 {
-		status = "okay";
-		compatible = "edt,edt-ft5206";
-		reg = <0x38>;
-		pinctrl-names = "default";
-		pinctrl-0 = <&pinctrl_captouch>;
-		interrupt-parent = <&gpio5>;
-		interrupts = <4 IRQ_TYPE_EDGE_FALLING>;
-		touchscreen-size-x = <800>;
-		touchscreen-size-y = <480>;
-		touchscreen-inverted-x;
-		touchscreen-inverted-y;
-		wakeup-source;
-	};
+//	ft5x06_ts: ft5x06_ts@38 {
+//		status = "okay";
+//		compatible = "edt,edt-ft5206";
+//		reg = <0x38>;
+//		pinctrl-names = "default";
+//		pinctrl-0 = <&pinctrl_captouch>;
+//		interrupt-parent = <&gpio5>;
+//		interrupts = <4 IRQ_TYPE_EDGE_FALLING>;
+//		touchscreen-size-x = <800>;
+//		touchscreen-size-y = <480>;
+//		touchscreen-inverted-x;
+//		touchscreen-inverted-y;
+//		wakeup-source;
+//	};
 
 	/* DS1337 RTC module */
-	rtc@68 {
-		status = "okay";
-		compatible = "dallas,ds1337";
-		reg = <0x68>;
-	};
+//	rtc@68 {
+//		status = "okay";
+//		compatible = "dallas,ds1337";
+//		reg = <0x68>;
+//	};
 };
 
 &i2c4 {
