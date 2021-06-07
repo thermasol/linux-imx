@@ -397,6 +397,10 @@
 	scl-gpios = <&gpio5 20 GPIO_ACTIVE_HIGH>;
 	sda-gpios = <&gpio5 21 GPIO_ACTIVE_HIGH>;
 	status = "okay";
+	adc081c {
+		compatible = "ti,adc081c";
+		reg = <0x54>;
+	};
 };
 
 &mipi_csi_1 {
