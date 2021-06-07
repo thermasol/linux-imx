@@ -76,11 +76,11 @@
 		};
 	};
 
-	pcie0_refclk: pcie0-refclk {
-		compatible = "fixed-clock";
-		#clock-cells = <0>;
-		clock-frequency = <100000000>;
-	};
+//	pcie0_refclk: pcie0-refclk {
+//		compatible = "fixed-clock";
+//		#clock-cells = <0>;
+//		clock-frequency = <100000000>;
+//	};
 
 	reg_usb_otg2_vbus: regulator-usb-otg2-vbus {
 		compatible = "regulator-fixed";
@@ -426,11 +426,11 @@
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_pcie0>;
 	reset-gpio = <&gpio4 21 GPIO_ACTIVE_LOW>;
-	clocks = <&clk IMX8MM_CLK_PCIE1_ROOT>,
-		 <&clk IMX8MM_CLK_PCIE1_AUX>,
-		 <&clk IMX8MM_CLK_PCIE1_PHY>,
-		 <&pcie0_refclk>;
-	clock-names = "pcie", "pcie_aux", "pcie_phy", "pcie_bus";
+//	clocks = <&clk IMX8MM_CLK_PCIE1_ROOT>,
+//		 <&clk IMX8MM_CLK_PCIE1_AUX>,
+//		 <&clk IMX8MM_CLK_PCIE1_PHY>,
+//		 <&pcie0_refclk>;
+//	clock-names = "pcie", "pcie_aux", "pcie_phy", "pcie_bus";
 	ext_osc = <1>;
 	status = "okay";
 };
