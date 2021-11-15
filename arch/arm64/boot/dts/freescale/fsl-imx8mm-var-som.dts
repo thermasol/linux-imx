@@ -146,8 +146,8 @@
 		compatible = "fixed-clock";
 		#clock-cells = <0>;
 		/* On SOM revions 1.2 and below the frequency should be 20000000 */
-		clock-frequency = <20000000>;
-//		clock-frequency = <40000000>;
+		//clock-frequency = <20000000>;
+		clock-frequency = <40000000>;
 	};
 
 	reserved-memory {
